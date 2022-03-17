@@ -2,8 +2,8 @@ import 'dart:io';
 
 void main() {
 
-	String nama_pemesan, kode_kamar, jenis_kamar, no_pilihan, fasilitas_tambahan, lama_inap, ulangi;
-	int tarif_kamar, total_tarif_kamar, harga_fasilitas_tambahan, kg, total;
+	String nama_pemesan, kode_kamar, jenis_kamar, no_pilihan, fasilitas_tambahan, lama_inap, kg, ulangi;
+	int tarif_kamar, total_tarif_kamar, harga_fasilitas_tambahan,total;
 	double diskon = 0;
 
 	do {
@@ -44,11 +44,13 @@ void main() {
 		// fasilitas Tambahan 
 		if(no_pilihan == '1') {
 			fasilitas_tambahan = 'LAUNDRY';
-			if(fasilitas_tambahan == 'LAUNDRY') {
+			stdout.write('Masukkan berapa Kg  : ');
+			kg = stdin.readLineSync();
+			while(kg.isEmpty) {
 				stdout.write('Masukkan berapa Kg  : ');
-				kg = int.parse(stdin.readLineSync());
-				harga_fasilitas_tambahan = 10000 * kg;
+				kg = stdin.readLineSync();
 			}
+			harga_fasilitas_tambahan = 10000 * int.parse(kg);
 		} else if(no_pilihan == '2' ) {
 			fasilitas_tambahan = 'ANTAR JEMPUT';
 			harga_fasilitas_tambahan = 150000;
@@ -81,10 +83,10 @@ void main() {
 
 		// tampilkan hasil
 		print('\n');
-		print('==========================================');
+		print('==============================================');
 		print('             HOTEL INDAH SEJAHTRA');
 		print('               BUKTI PEMBAYARAN ');
-		print('------------------------------------------');
+		print('==============================================');
 		print('Nama Pemesan                     : $nama_pemesan');
 		print('Kode Jenis Kamar                 : $kode_kamar');
 		print('Jenis Kamar                      : $jenis_kamar');
@@ -100,10 +102,10 @@ void main() {
 		print('Total Harga                      : $total');
 		print('\n');
 
-		stdout.write('Input Lagi ? [Y/N] ');
+		stdout.write('Input Lagi [Y/N] ? ');
 		ulangi = stdin.readLineSync();
 		while(ulangi.isEmpty) {
-			stdout.write('Input Lagi ? [Y/N] ');
+			stdout.write('Input Lagi  [Y/N] ? ');
 			ulangi = stdin.readLineSync();
 		}
 
